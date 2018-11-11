@@ -1,0 +1,32 @@
+#!/bin/python3
+
+import shutil 
+import os 
+import sys 
+
+if(len(sys.argv) < 4):
+    print("НЕЧЕГО ЧИСТИТЬ")
+    exit(1)
+file_name = sys.argv[1]
+limitsize = int(sys.argv[2])
+logsnumber = int(sys.argv[3])
+
+if(os.patch.isfile(file_name) == True):
+    logfile_size = os.stat(file_name).st_size 
+    logfile_size = logfile_size / 1024
+
+    if(logfile_size >= limitsize):
+        if(logsnumber > 0):
+            for curentfilenumber in range(logsnumber, 1, -1):
+                src = file_name + '_' str(currentfilenum-1)
+                dst = file_name + '_' str(currentfilenum)
+                if(os.patch.isfile(src) == True):
+                    shutil.copyfile(src, dst)
+                    print("coppy" + src + "to" + dst)
+                    shutil.copyfile(file_name, file_name + "_1")
+                    print("coppyed" + ffile_name + " to" + file_name + "_1")
+                    myfile = open(file_name, "v")
+                    myfile.close()
+
+
+
